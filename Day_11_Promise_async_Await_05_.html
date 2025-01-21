@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice CallBack Promise Async Await</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="message"></div>
+        <button id="btnGet">Get Message</button>
+    </div>
+
+
+
+</body>
+<script>
+    // // CallBack hell 
+
+    // function getId(id, nextId) {
+    //     setTimeout(() => {
+    //         console.log("Data : ", id);
+    //         if (nextId) {
+    //             nextId();
+    //         }
+    //     }, 2000);
+    // }
+
+    // getId(1, () => {
+    //     getId(2, () => {
+    //         getId(3, () => {
+    //             getId(4);
+    //         })
+    //     })
+    // })
+
+
+    // getId(1);
+    // getId(1);
+    // getId(1);
+    // getId(1);
+
+
+
+    // // Promise function
+
+    // function getData(data , nextData){
+    //     return new Promise((resolve , reject) => {
+    //         setTimeout(() => {
+    //             if(data){
+    //                 console.log("data is : " , data);
+    //                 resolve("success");
+    //             }else{
+    //                 reject("failed ho gya ")
+    //             }
+    //         },2000)
+    //     })
+    // }
+
+    // getData(1)
+    // .then(res => {return getData(2)})
+    // .then(res =>getData(3))
+    // .then(res =>getData(4))
+    // .then(res => {console.log(res);})
+
+
+    // // Promise chaining
+    // getData()
+    // .then((result) => {
+    //     console.log(result);
+    // }).catch((err) => {
+    //     console.log(err);
+    // });
+
+
+
+    // let success = true;
+
+    // function getUsers(){
+    //     return new Promise((resolve , reject) => {
+    //         setTimeout(() => {
+    //             if(success){
+    //                 resolve([
+    //                 { username: 'Pankaj', email: 'pankaj@123.com' },
+    //                 { username: 'Monika', email: 'Monika@143.com' },
+    //                 ])
+    //             }else{
+    //                 reject('Failed to the user List')
+    //             }
+    //         }, 1000);
+    //     });
+    // }
+
+    // let ans;
+    // const promise = getUsers();
+    // promise
+    // .then((result) => {
+    //     ans = result;
+    //     console.log(result);
+    // }).catch((err) => {
+    //     console.log(err);
+    // });
+
+
+
+    function load(url) {
+        return new Promise(function (resolve, reject) {
+            const request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status == 200) {
+                    resolve(this.response);
+                } else {
+                    reject(this.status);
+                }
+            };
+            request.open('GET', url, true);
+            request.send();
+        });
+    }
+
+
+
+    const url = 'https://www.javascripttutorial.net/sample/promise/api.json';
+    const btn = document.querySelector('#btnGet');
+    const msg = document.querySelector('#message');
+
+    btn.addEventListener('click', () => {
+        load(URL)
+            .then((response) => {
+                const result = JSON.parse(response);
+                msg.innerHTML = result.message;
+            })
+            .catch((error) => {
+                msg.innerHTML = `Error getting the message, HTTP status: ${error}`;
+            });
+    });
+
+
+
+
+    // Promise Chaining 2.0
+
+function getUser(userId) {
+    return new Promise((resolve, reject) => {
+        console.log('Get the user from the database.');
+        setTimeout(() => {
+            resolve({
+                userId: userId,
+                username: 'admin'
+            });
+        }, 1000);
+    })
+}
+
+function getServices(user) {
+    return new Promise((resolve, reject) => {
+        console.log(`Get the services of ${user.username} from the API.`);
+        setTimeout(() => {
+            resolve(['Email', 'VPN', 'CDN']);
+        }, 3 * 1000);
+    });
+}
+
+function getServiceCost(services) {
+    return new Promise((resolve, reject) => {
+        console.log(`Calculate the service cost of ${services}.`);
+        setTimeout(() => {
+            resolve(services.length * 100);
+        }, 2 * 1000);
+    });
+}
+
+// getUser(100)
+// .then(getServices)
+// .then(getServiceCost)
+// .then(res => {console.log(res)})
+
+
+
+// Promise .all()
+
+const p1 = new Promise((resolve , reject) => {
+    setTimeout(() => {
+        console.log('the first promise has resolved');
+        resolve(10);
+    }, 1 * 1000);
+});
+
+const p2 = new Promise((resolve , reject) => {
+    setTimeout(() => {
+        console.log('the second promise has resolved');
+        resolve(20);
+    }, 2 * 1000);
+});
+
+const p3 = new Promise((resolve , reject) => {
+    setTimeout(() => {
+        console.log('the third promise has resolved');
+        resolve(30);
+    }, 3 * 1000);
+});
+
+
+// Promise.all([p1 , p2 , p3])
+// .then((result) => {
+//     const total = result.reduce((acc , currVal) => {
+//         return acc + currVal;
+//     },0)
+//     console.log('Array result is : ' , result);
+//     return total;
+// })
+// .then(result => {console.log('Total is : ' , result)})
+// .catch((err) => {
+//     console.log(err);
+// });
+
+
+
+// Promise.all([p1, p2, p3])
+//     .then(console.log) // never execute
+//     .catch(console.log);
+
+
+</script>
+
+
+</html>

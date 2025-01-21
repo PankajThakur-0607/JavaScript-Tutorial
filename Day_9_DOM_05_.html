@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add divs to multiple container</title>
+</head>
+
+<body>
+    <!-- Top container -->
+    <div id="containerTop"></div>
+
+    <!-- Bottom container -->
+    <div id="containerBottom"></div>
+
+    <script>
+        // Function to add divs to a specified container
+        function addDivsToContainer(containerId , numberOfDivs , containerName){
+            const container = document.getElementById(containerId) // Get the Container Element by Id
+
+            for(let i = 0; i < numberOfDivs ; i++){
+                const newDiv = document.createElement('div');
+
+                let divText = document.createTextNode(`this is ${containerName} div number ${i}`);
+                newDiv.appendChild(divText);
+
+
+                // Style the Div (optional)
+                newDiv.style.border = `2px solid black`;
+                newDiv.style.margin = '5px';               
+                newDiv.style.padding = '10px';
+                
+                // Append the new div to the container 
+                container.appendChild(newDiv);
+            }
+        }
+
+        addDivsToContainer('containerTop' , 3 , 'top');
+        addDivsToContainer('containerTop' , 3 , 'top');
+    </script>
+</body>
+
+</html>

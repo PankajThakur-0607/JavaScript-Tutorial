@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage and Session Storage</title>
+</head>
+
+<body>
+
+    <h2>Activities</h2>
+
+
+    <form action="http://www.google.com" id="userForm" method="GET">
+        <Label for="1">Name : </Label>
+        <input type="text" name="Pankaj thakur" id="firstName" placeholder="Enter Your Name" required>
+        <Label for="2">Surname : </Label>
+        <input type="text" name="Hello" id="lastName" placeholder="Enter Your Surname" required>
+
+        <button type="submit">Submit </button>
+    </form>
+
+
+    <form action="" id="userForm2">
+
+        <label for="name">Name</label>
+        <input type="text" name="" id="name" required>
+        <label for="email">Email: </label>
+        <input type="email" name="" id="email" required>
+
+        <button type="submit">Click Me!</button>
+    </form>
+
+</body>
+
+<script>
+    // Activity 1 
+    // Task 1: Saving and Retrieving a String in localStorage
+    localStorage.setItem('Name', 'Pankaj Thakur');
+
+    console.log(localStorage.getItem('Name'));
+
+
+    // Task 2: Saving and Retrieving an Object in localStorage
+    let obj = {
+        backgroundColor: '#ccc',
+        color: 'white',
+        theme: 'dark'
+    }
+
+
+    localStorage.setItem('object1', JSON.stringify(obj));
+
+    let getObj = JSON.parse(localStorage.getItem('object1'));
+
+
+    //Task 3 
+    document.querySelector('#userForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        let name = document.getElementById('firstName').value;
+        let surName = document.getElementById('lastName').value;
+
+        let userInfo = { name, surName };
+
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
+
+        displayUser();
+    })
+
+
+    function displayUser() {
+        let savedUser = JSON.parse(localStorage.getItem('userInfo'));
+        if (savedUser) {
+            console.log(`Name : ${savedUser.name} Surname : ${savedUser.surName}`);
+        }
+    }
+
+    console.log(localStorage);
+
+
+    // Task 4
+    localStorage.removeItem('usetInfo');
+
+    console.log(localStorage);
+
+    localStorage.clear();
+
+    // Activity 3 Understanding Session Storage
+
+    // Task 5
+    sessionStorage.setItem('Name' , 'Khushi Patel');
+
+    console.log(sessionStorage.getItem('Name'));
+    
+    // TASK 6 
+        let book = {
+            name : 'The Alchemist' ,
+            author : 'Paul Ceole',
+            published : 1975
+        }
+
+        sessionStorage.setItem('books' , JSON.stringify(book));
+        console.log(JSON.parse(sessionStorage.getItem('books')));
+
+
+
+        // Activty 4 Using Session Storage
+ 
+        document.getElementById('userForm2').addEventListener('submit' , function(e){
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let lifePartner = {name , email};
+            sessionStorage.setItem('partner' , JSON.stringify(lifePartner));
+
+            console.log(e);
+
+            displayMonika();
+        })
+
+
+        function displayMonika(){
+            let monikaSingh = sessionStorage.getItem('partner');
+            console.log(`my Name is ${monikaSingh.name} & my email is ${monikaSingh.email}`);
+        }
+
+
+        sessionStorage.removeItem('partner');
+
+        // Activity 5 
+
+        function keyValuePair(key , value){
+            localStorage.setItem(key , value);
+            sessionStorage.setItem(key , value);
+        }
+
+        keyValuePair('pankaj' , 'Thakur')
+        console.log(localStorage.getItem('pankaj'));
+        console.log(sessionStorage.getItem('pankaj'));
+
+        function clearBoth(){
+            localStorage.clear();
+            sessionStorage.clear();
+        }
+
+        console.log(sessionStorage.length);
+        console.log(localStorage.length);
+        clearBoth();
+        console.log(sessionStorage.length);
+        console.log(localStorage.length);
+
+</script>
+
+</html>

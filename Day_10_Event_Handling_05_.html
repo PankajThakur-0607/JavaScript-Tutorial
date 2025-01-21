@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation</title>
+    <style>
+        li {
+            padding: 5px;
+            margin: 5px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <span>
+            <button>Click ME!</button>
+        </span>
+    </div>
+
+
+    <ul id="buttonList">
+        <li><button>Button 1</button></li>
+        <li><button>Button 2</button></li>
+        <li><button>Button 3</button></li>
+        <li><button>Button 4</button></li>
+    </ul>
+
+    <ul id="list">
+        <li>list 1</li>
+        <li>list 2</li>
+        <li>list 3</li>
+        <li>list 4</li>
+    </ul>
+
+
+
+    <script>
+
+        const div = document.querySelector('div');
+        div.addEventListener('click' , (event) =>{
+            console.log(event.target.tagName);
+            if(event.target.tagName === 'BUTTON'){
+                console.log("button was clicked");
+            }
+        })
+
+
+
+        // // Simple Event Handling
+        // const buttons = document.querySelectorAll('button');
+        // buttons.forEach(button => {
+        //     button.addEventListener('click' , (e) => {
+        //         console.log(e.target.innerText);
+        //     })
+        // });
+
+
+        // Using Event delegation 
+        const  ul = document.getElementById('buttonList');
+        ul.addEventListener('click' , function(event) {
+            if(event.target.tagName === 'LI'){
+                console.log(event.target.innerText);
+            }
+
+            if(event.target.tagName === 'BUTTON'){
+                console.log(event.target.innerText);
+            }
+        });  
+
+        const newUl = document.getElementById('list');
+        
+        newUl.addEventListener('click' , (event) => {
+            if(event.target.tagName === 'LI'){
+                console.log(event.target.innerText);
+            }
+        })
+
+
+
+
+
+
+        
+    </script>
+</body>
+</html>

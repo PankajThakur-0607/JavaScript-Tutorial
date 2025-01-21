@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 9</title>
+    <style>
+      .oldStyle{
+        width: 100vw; 
+        height: 100px; 
+        background-color: pink;
+      }
+      .newStyle{
+        width: 100vw; 
+        height: 100px; 
+        background-color: yellow;
+      }
+    </style>
+</head>
+<body>
+     <!-- Activity 1  -->
+      <div id="title">
+        This i my Activity 1 
+      </div>
+
+      <p class="first">
+        This is my First Para
+      </p>
+
+      <ul id="list">
+        <li>Kunal Lohar</li>
+        <li>Pankaj Thakur</li>
+      </ul>
+
+      <!-- Activity 4  -->
+      <img src="./hanuman.jpg" alt="" style="height: 40vh; width: 50vw;">
+
+
+      <div class="oldStyle"> I am div 1</div>
+
+
+      <!-- // Activity 5  -->
+
+      <p id="changeText">"Click Me " to  change the content With JS</p>
+
+      <div id="changeColor">
+        when Mouse Over I will change color;
+      </div>
+
+</body>
+
+<script>
+
+    // Activity 1 
+
+    // let div = document.getElementById('title');
+    // div.innerHTML = "Kunal Loves his crush"
+
+    let p = document.getElementsByClassName('first');
+    console.log(p);
+    p[0].innerHTML = 'I am In Love with this World'
+
+
+    // Activity  2 
+
+    let div = document.createElement('div');
+    div.append(document.createTextNode('This is dynamic Div'));
+    document.body.appendChild(div);
+    console.log(div);
+
+function addName(userName){
+  let uL = document.querySelector('#list');
+  let newLi = document.createElement('li');
+  newLi.appendChild(document.createTextNode(userName));
+  uL.appendChild(newLi);
+}
+
+addName('Monika thakur');
+
+
+// Activity 3 
+
+p[0].remove(); 
+let ul = document.querySelector('#list');
+// ul.remove();
+console.log(ul);
+
+// let lastName = document.querySelector('li:last-child');
+// lastName.remove();
+
+
+
+// Modifying Attributes 
+document.querySelector('img').src = 'inspire black desktop wallpaper.png'
+
+
+// Activity 4 
+
+let list = document.querySelector('.oldStyle');
+// list.classList.remove('oldStyle');
+// list.classList.add('newStyle');
+
+list.classList.replace('oldStyle', 'newStyle');
+
+
+
+// Activity 5 
+
+let changeText = document.getElementById('changeText');
+console.log(changeText);
+
+changeText.addEventListener('click' , function(){
+  changeText.textContent = 'I changed my Content';
+});
+
+let changeColor = document.getElementById('changeColor');
+console.log(changeColor);
+changeColor.addEventListener('mouseover' , () => {
+  changeColor.style.border = '2px solid black';
+})
+
+
+
+</script>
+</html>

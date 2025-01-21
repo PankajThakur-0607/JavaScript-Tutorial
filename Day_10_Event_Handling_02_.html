@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling </title>
+</head>
+
+<style>
+#myDiv1, #myDiv2 {
+  background-color: coral;
+  padding: 50px;
+}
+
+#myP1, #myP2 {
+  background-color: white; 
+  font-size: 20px;
+  border: 1px solid;
+  padding: 20px;
+}
+</style>
+<body>
+    
+    <h2>JavaScript addEventListener()</h2>
+
+    <div id="myDiv1">
+      <h2>Bubbling:</h2>
+      <p id="myP1">Click me!</p>
+    </div><br>
+        <div id="myDiv2">
+      <h2>Capturing:</h2>
+      <p id="myP2">Click me!</p>
+    </div>
+   
+
+    <h3>Prevent Default</h3>
+
+    <form id="myForm" action="" method="">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+      <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p>
+
+
+</body>
+
+<script>
+        
+    let div1 = document.querySelector('#myDiv1'); 
+    let p1 = document.querySelector('#myP1');
+    
+    let div2 = document.querySelector('#myDiv2'); 
+    let p2 = document.querySelector('#myP2');
+
+
+    // Event bubbling 
+    div1.addEventListener('click' , function() {
+        console.log("You clicked the orange element");
+    } , false);
+    p1.addEventListener('click' , function(e) {
+        e.stopPropagation();
+        console.log("You Clicked the white element");
+    } ,false);
+
+
+    // Event Caputuring
+    div2.addEventListener('click' , function() {
+        console.log("You clicked the orange element");
+    } , true);
+
+    p2.addEventListener('click' , function() {
+        console.log("You Clicked the white element");
+    } ,true);
+   
+    
+
+    
+
+    // Prevent default 
+    const form = document.querySelector('#myForm');
+    const message = document.querySelector('#message');
+
+    form.addEventListener('submit' , function(e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById('email').value;
+
+      if(emailInput === ''){
+        message.textContent = 'Please Enter an email';
+      }else{
+        message.textContent = 'form submitted successfully';
+      }
+    })
+
+        
+         
+            
+
+</script>
+</html>

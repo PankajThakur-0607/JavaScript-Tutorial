@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+
+    // Activity  1  UnderStanding Closure
+    // Task  1
+    function outer(message) {
+        return function (innerMsg) {
+            console.log("outer message is stores using closure", message);
+            console.log("inner message is : ", innerMsg);
+        }
+    }
+
+    let newFunction = outer('I will definetly Do it No Matter What');
+
+    newFunction('no other option');
+
+
+    // Task 2 
+
+    function getCounter() {
+        let counter = 0;
+
+        return {
+            increment: function () {
+                counter++;
+                return counter;
+            },
+            getCount: function () {
+                return counter;
+            }
+        }
+    }
+
+    let countFn = getCounter();
+    console.log(countFn.increment());
+    console.log(countFn.increment());
+    console.log(countFn.increment());
+    console.log("The total count is : ", countFn.getCount());
+    // console.log(countFn());
+
+
+
+    //  Activity 2 Practical Closure 
+    // Task 3
+
+    function generateId() {
+        let id = 0;
+        return function () {
+            id++;
+            return id;
+        }
+    }
+
+    let getId = generateId();
+    console.log(getId());
+    console.log(getId());
+    console.log(getId());
+
+    //Task 4 
+
+    function getUser() {
+        let username = 'Pankaj Thakur';
+
+        return function () {
+            console.log(`Hello  ${username}`);
+        }
+    }
+
+    let greet = getUser();
+    greet();
+
+
+    // Activity 3 
+    //  TAsk 5 ;
+
+    function createFuncArr() {
+        const functions = [];
+        for (let i = 0; i < 5; i++) {
+            functions.push(function () {
+                console.log(i);
+            });
+        }
+        return functions;
+    }
+
+    const functionArr = createFuncArr();
+    functionArr[0]();
+    functionArr[4]();
+
+
+    // Activity 4 ;
+    
+    // Task 6 
+
+    const itemManager = (function () {   // IIFE starts here
+        const items = [];   // Private array to store items
+
+        return {   // Returning an object with methods
+            addItem: function (item) {   // Method to add items
+                items.push(item);   // Adds the item to the private array
+            },
+            removeItem: function (item) {   // Method to remove items
+                const index = items.indexOf(item);   // Finds the index of the item
+                if (index > -1) {   // If the item is found
+                    items.splice(index, 1);   // Removes it from the array
+                }
+            },
+            listItems: function () {   // Method to list all items
+                return items;   // Returns the current list of items
+            }
+        };
+    })();   // IIFE ends here and runs immediately
+    
+    
+    itemManager.addItem('apple')
+    itemManager.addItem('mango')
+    console.log(itemManager.listItems());
+    
+    
+    // Activity 5 ;
+    // Task 7 
+
+    function memoize(fn){
+        const cache = {};
+        return function(...args){
+            const key = JSON.stringify(args);
+            
+            if(cache[key]){
+                console.log('Fetching from cache');
+                return cache[key];
+            }
+            const result = fn(...args);
+            cache[key  ] = result ;
+            return result;
+        }
+    }
+
+const factorial = memoize(function(n) {
+    if(n === 0 || n === 1 ) return 1 ;
+
+        return n * factorial(n - 1);
+})
+
+console.log(factorial(5));
+console.log(factorial(5));
+console.log(factorial(5));
+</script>
+
+</html>

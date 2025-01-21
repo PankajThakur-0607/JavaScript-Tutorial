@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #313131;">
+
+
+    <button class="green">Green</button>
+    <button class="orange">Orange</button>
+</body>
+
+<script>
+
+
+    // Lexical Scoping 
+    // Parents function can provide value to children but children cant give to parents or siblings
+
+    // function parent(){
+
+    //     let username = 'papa';
+    //     function child1(){
+    //         console.log("I am a child and  a brother ");
+    //         let secret  = 'its a secret'
+    //         console.log("My parent is : " , username);
+    //     }
+
+
+
+    //     function child2 (){
+    //         console.log("parent two : "  , username);
+    //         console.log(secret);
+    //     }
+
+    //     child1();
+    //     child2()
+    //     console.log(secret);
+    // }
+
+    // parent();
+    // console.log(username);
+
+
+    function makeFunc() {
+        const name = 'Moxilla';
+        function displayName() {
+            console.log(name);
+        }
+        return displayName;
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+
+    document.querySelector('.green').addEventListener('click', function () {
+        document.body.style.backgroundColor = 'green';
+    })
+    document.querySelector('.orange').addEventListener('click', function () {
+        document.body.style.backgroundColor = 'orange';
+    })
+
+    function handleFn(color) {
+        return function () {
+            document.body.style.backgroundColor = `${color}`;
+        }
+    }
+
+    document.querySelector('.orange').onclick = handleFn('orange');
+    document.querySelector('.green').onclick = handleFn('green');
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

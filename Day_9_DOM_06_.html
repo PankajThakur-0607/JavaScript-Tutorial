@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function to create Div </title>
+</head>
+<body>
+    <!--  creating div using JS -->
+    <script>
+        function createElement(elementName , elementId , elementClass , str){
+            const  divName = document.createElement(elementName);
+            divName.id = elementId;
+            divName.className = elementClass;
+            let addText = document.createTextNode(`${str}`);
+            divName.appendChild(addText);
+
+            // Style
+            divName.style.width = '100px';  
+            divName.style.height = '100px';  
+            divName.style.padding = '10px';  
+            divName.style.margin = '10px';  
+            divName.style.backgroundColor = 'yellow';  
+            divName.style.color = 'red';
+            document.body.appendChild(divName);
+
+        }
+
+        createElement('div' , 'container' , 'heading' , "this is my world");
+
+        createElement('div' , 'square' , 'one' , 'hello')
+    </script>
+
+</body>
+
+</html>

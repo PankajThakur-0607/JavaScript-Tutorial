@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            border: 2px solid black;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Activity 1  -->
+    <button id="btnChange" style="color: yellow; background-color: gray; border-radius: 10px; height: 50px; width: 100px; font-size: x-large;">Click</button>
+    <p id="para">Hello! the above button  will change Of the Paragraph Using JS
+        It been  a long Journey My friend 
+        I am tired but i will not rest No Matter Whats
+        the Struggle itself is the reward...
+    </p>
+
+
+    <img src="./inspire black desktop wallpaper.png" style="height: 50vh; width: 60vw;" alt="Focus" id="image">
+
+
+    
+    <!-- Activity  2 -->
+    
+    <div id="box">
+        Box 1 
+    </div>
+
+    <!-- Activity 3  -->
+    <label for="keyBtn" >Enter the Key </label>
+    <input type="text" id="keyBtn"  name="keyBtn" value="">
+    <p id="show"></p>
+    <p id="show2"></p>
+
+
+    <!-- Activity 4 -->
+
+    <form action="" id="myForm">
+        <label for="username">First Name</label>
+        <input type="text" name="username" id="fName">
+        <button type="submit">Submit</button>
+    </form>
+    
+
+    <select id="dropdown">
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+    </select>
+    <p id="selectedValue">Selected: None</p>
+    
+
+
+    <!-- Activity  5  -->
+    <ul id="buttonList">
+        <li><button>Button 1</button></li>
+        <li><button>Button 2</button></li>
+        <li><button>Button 3</button></li>
+        <li><button>Button 4</button></li>
+    </ul>
+
+
+
+    <div class="container">
+        <h3>The list Element</h3>
+        <button>Add New Button</button>
+    </div>
+</body>
+<script>
+
+    // Activity 1 
+    let button = document.getElementById('btnChange');
+    button.addEventListener('click' , (e) =>{
+    let changePara = document.getElementById('para');
+    changePara.style.color = 'red';
+    })
+
+
+    let image = document.getElementById('image');
+
+    image.addEventListener('dblclick' , (img) => {
+        image.style.display = image.style.display === 'none' ? 'block' : 'none' ;
+    });
+
+
+    // Activity 2 
+    let box = document.getElementById('box');
+    console.log(box);
+    box.addEventListener('mouseover' , () => {
+        box.style.backgroundColor = 'yellow';
+    })
+
+    box.addEventListener('mouseout' , function(){
+        box.style.backgroundColor = 'red';
+    })
+
+
+    // Activity  3
+    let keyBtn = document.getElementById('keyBtn');
+    keyBtn.addEventListener('keydown' , (k) =>{
+        let showKey = document.getElementById('show');
+        showKey.innerHTML = 'You Pressed the Key';
+    })
+
+    keyBtn.addEventListener('keyup' , (k) =>{
+    k.target.value = k.target.value.toUpperCase();
+    document.getElementById('show2').innerHTML = `The key released is ${k.key} `;
+    })
+
+    // Activity 4
+    
+    const form = document.getElementById('myForm');
+
+    form.addEventListener('submit' , (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const values = [...formData.entries()];
+        // console.log('Form data:', Object.fromEntries(formData.entries()));
+        console.log(Object.fromEntries(values));
+    })
+
+    const dropdown = document.getElementById('dropdown');
+    const display = document.getElementById('selectedValue');
+
+    dropdown.addEventListener('change', () => {
+        display.textContent = `selected : ${dropdown.value}`
+    })
+
+
+    //Activity   5 
+
+    let ul = document.getElementById('buttonList');
+    ul.addEventListener('click' ,  function(event){
+        if(event.target.tagName === 'BUTTON'){
+            console.log(event.target);
+        }
+    })
+
+
+    // Task 10 
+
+    // let div = document.querySelector('.container');
+    // function addNewLi(langName){
+    //     let li = document.createElement('li');
+    //     li.appendChild(document.createTextNode(langName));
+    //     div.appendChild(li);
+    // }
+
+    // console.log(div);
+    // addNewLi('java');
+    // addNewLi('python');
+    // addNewLi('JS');
+
+    // div.addEventListener('click'  , (event) => {
+    //     console.log(event.target.textContent);
+    // })
+
+    let parentDiv = document.querySelector('.container');
+
+    parentDiv.addEventListener('click' , (event) => {
+        if(event.target.tagName === 'BUTTON'){
+            if(event.target.textContent === 'Add New Button'){
+                const newBtn = document.createElement('button');
+                newBtn.appendChild(document.createTextNode(`Button ${parentDiv.children.length}`));
+                parentDiv.appendChild(newBtn);
+                console.log(newBtn);
+            }else{
+            // if dynamically added button is clicked
+            console.log(`${event.target.textContent} was clicked`);
+            }
+        }
+    })
+
+    
+
+       
+
+</script>
+</html>

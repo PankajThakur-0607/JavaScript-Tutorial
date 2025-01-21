@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+    
+</head>
+
+<body style=" background-color: #414141; color: white;">
+    <!-- 
+    <h2>My First Page</h2>
+    <p id="hello"></p>
+
+    <h2>JavaScript HTML DOM</h2>
+
+    <p>FInding HTML Elements by TagName</p>
+    <p>This example Demonstrate the
+    <b>getElement byTagName </b></p>
+
+    <p id="tagName"></p>
+
+    <p id="another"></p>
+
+    -->
+    <!-- 
+    <p class="intro">Hello My Name is Pankaj Thakur</p>
+    <p class=" intro" > I cam from a small Town </p>
+    <p id="classtest"></p> -->
+
+
+
+    <!-- <p>Finding HTML Elements Using <b>document.forms</b>.</p>
+
+    <form id="frm1" action="/action_page.php">
+        <label for="fname">First name:</label>
+        <input type="text" name="fname" value="Pankaj" id="fname"><br>
+
+        <label for="lname">Last name:</label>
+        <input type="text" name="lname" value="Thakur" id="lname"><br><br>
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+    <p>These are the values of each element in the form:</p>
+
+     <p id="formTest">khkj</p>
+
+     <h2 id="time"></h2>
+
+
+    <script>
+        let time = document.getElementById('time');
+
+       let getTime =  document.write(Date());
+       console.log(getTime);
+
+    </script> -->
+
+
+
+     <div id="title" class="heading" style="color: #14dcd2;">
+
+        <h2>Learning DOM <span style="display: none;">Manipulation</span > </h2>
+            <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus, corrupti?</h2>
+            <h2>consectetur adipisicing elit. Possimus, corrupti?</h2>
+            <h2>Possimus, corrupti?</h2>
+        <p id="head">Hello World WElcome to coding</p>
+        <input type="password" name="PankajThakur" id="">
+    </div>
+    
+
+</body>
+
+<script>
+
+    /*
+    
+    document.getElementById('hello').innerHTML = 'Hello Pankaj'
+    const element =  document.getElementsByTagName('p');
+    console.log(element);
+    
+    document.getElementById('tagName').innerHTML = 'The text in first paragraph (index 0) is : ' + element[0].innerHTML;
+    
+    document.getElementById('another').innerHTML = 'The Text in this para is (index 4) : ' + element[2].innerHTML;
+    */
+
+
+    // *********************************************************
+
+    // const  classElm = document.getElementsByClassName('intro');
+    // console.log(classElm);
+
+    // const  x = document.querySelectorAll('p.intro');
+    // document.getElementById('classtest').innerHTML = x[1].innerHTML;
+    // document.getElementById('classtest').innerHTML = 'The first paragraph of introDuction (index 0)  is : ' + classElm[i].innerHTML;
+
+
+
+
+
+
+    // **************************************************
+
+    // const  x = document.forms['frm1'];
+    // console.log( x.elements);
+    // let text = "";
+    // for(let i = 0 ; i < x.length ; i++){
+    //     text += x.elements[i].value; + "<br>";
+    // }
+
+    // document.getElementById('formTest').innerHTML = text;
+
+
+
+    //**********************************************************
+
+
+
+     
+    // let title = document.getElementById('title').setAttribute('title', 'hello');
+    // let title = document.getElementById('title');
+    // console.log(title);
+    // title.style.backgroundColor = 'green';
+
+    // title.style.color = '#14dcd2';
+    // title.style.borderRadius = '10px';
+    
+    // console.log(title.textContent);
+    // console.log(title.innerText);
+    // console.log(title.innerHTML);
+
+    // *******************************************
+
+
+
+    console.log(document.getElementsByClassName('heading'));
+
+    let qS = document.querySelector('#title');
+    console.log(qS);
+    
+    let input = document.querySelector('input[type =password]');
+    console.log(input);
+
+
+
+
+
+</script>
+
+</html>

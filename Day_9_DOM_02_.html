@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Element from HTML</title>
+</head>
+<body style="background-color: #414141; color: white;">
+    
+    <div>
+        <h2 id="title"  class="heading">
+            Hello I am Learning DOM Manipulation
+        </h2>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <h2>ahashush ipsum dolor sit amet.</h2>
+        
+        <ul>
+            <li class=" list-item">one</li>
+            <li class=" list-item">Two</li>
+            <li class=" list-item">Three</li>
+            <li class=" list-item">four</li>
+        </ul>
+    </div>
+
+
+    <div class="note">This ia a note!</div>
+
+</body>
+
+<script>
+    // const myUl = document.querySelector('ul');
+    // console.log(myUl);
+    // const myLi = document.querySelector('li');
+    // // const myLi = myUl.querySelector('li');
+    // myLi.style.backgroundColor = 'green';
+    // myLi.style.padding = '10px';
+    // myLi.innerText = 'Five';  
+
+
+    // creates nodeList 
+    // let elmt = document.querySelectorAll('li');
+    
+    // console.log(elmt);
+    // elmt.forEach((e) => {
+    //     console.log(e);
+    // });
+
+
+    // creates HTMLCollection
+    let htmlColl = document.getElementsByClassName(' list-item');
+    console.log(htmlColl);
+
+    let tempArray = Array.from(htmlColl);
+    console.log(tempArray);
+    // let tagName = document.getElementsByTagName('li');
+    // console.log(tagName);
+    // console.log(myLi);
+
+    // * *****************************************
+
+    // let allList = document.querySelectorAll('li');
+    // console.log(allList);
+
+    // let note = document.querySelector('.note');
+    // console.log(note.parentNode);
+
+
+
+
+
+</script>
+</html>

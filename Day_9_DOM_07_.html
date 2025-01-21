@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit or Remove a element</title>
+</head>
+<body>
+    
+<h2>JavaScript HTML DOM</h2>
+<p>Add a new HTML Element.</p>
+
+<div id="div1">
+    <p id="p1">This is a paragraph.</p>
+    <p id="p2">This is another paragraph.</p>
+
+</div>
+
+<!-- ******************************************** -->
+
+<ul class="language">
+    <li>JavaScript</li>
+</ul>
+
+<script>
+
+// Edit a element 
+
+
+
+
+
+
+
+
+
+
+
+    //  Remove a element 
+    const  para = document.createElement('p');
+    const node = document.createTextNode('This is a new para ');
+    para.appendChild(node);
+
+    const element = document.getElementById('div1');
+    const child = document.getElementById('p2');
+    // element.insertBefore(para , child );
+
+    console.log(element.childNodes);
+    console.log(element.children);
+    // Remove child -- select parent then the child you want to remove...
+    // element.removeChild(child); 
+                // or
+    // child.parentNode.removeChild(child);
+
+    // Remove() 
+    
+    // child.remove();
+    // node.remove();
+    // console.log(document.body.parentNode);
+
+
+
+
+    // Replce a Node 
+    // element.replaceChild(para, child);
+
+
+
+
+    // Edit a node
+    function addLanguage(langName){
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li);
+    }
+
+    addLanguage('Python');
+    addLanguage('C++');
+
+    function addOptiLanguage(langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+    
+    addOptiLanguage('Java');
+
+
+
+    // Edit 
+    const secondLang = document.querySelector('li:nth-child(2)');
+    // secondLang.innerHTML = 'Mojo';
+    const newLi = document.createElement('li');
+    newLi.appendChild(document.createTextNode('Mojo'));
+    secondLang.replaceWith(newLi);
+     
+
+    // Edit
+
+    const firstlang  = document.querySelector('li:first-child');
+    firstlang.outerHTML = '<li> TypeScript</li>'
+
+</script>
+</body>
+</html>

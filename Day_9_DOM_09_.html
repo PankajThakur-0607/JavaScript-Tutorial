@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="myElement" class="box shadow">
+        hello
+    </div>
+
+    <script>
+        const element = document.getElementById('myElement');
+        const classList = element.classList; // Returns a DOMTokenList object
+
+        // Example of item(index)
+        console.log(classList.item(0)); // Output: "box"
+        console.log(classList.item(1)); // Output: "shadow"
+
+        // Example of add(token)
+        classList.add('highlight'); // Adds 'highlight' class to the element
+        console.log(element.className); // Output: "box shadow highlight"
+
+        // Example of remove(token)
+        classList.remove('shadow'); // Removes 'shadow' class from the element
+        console.log(element.className); // Output: "box highlight"
+
+        // Example of contains(token)
+        console.log(classList.contains('box')); // Output: true
+        console.log(classList.contains('shadow')); // Output: false
+
+        // Example of toggle(token)
+        classList.toggle('highlight'); // Removes 'highlight' (if it exists)
+        console.log(element.className); // Output: "box"
+
+        // // Example of replace(oldToken, newToken)
+        // classList.replace('box', 'container'); // Replaces 'box' with 'container'
+        // console.log(element.className); // Output: "container"
+
+    </script>
+</body>
+
+</html>
+
+<!-- Here are some of the most commonly used methods and properties of the DOMTokenList:
+
+item(index): Returns the token (string) at the specified index. This is similar to accessing an array element.
+
+add(token1[, token2[, ...tokenN]]): Adds one or more tokens to the list. If the token already exists, it will not be added again.
+
+remove(token1[, token2[, ...tokenN]]): Removes one or more tokens from the list.
+
+contains(token): Returns true if the list contains the specified token, otherwise false.
+
+toggle(token[, force]): Removes the token if it is present; otherwise, adds the token. If a second argument is provided, it adds the token when the argument is true and removes it when false.
+
+replace(oldToken, newToken): Replaces an existing token with a new token.
+
+supports(token): Returns true if the underlying attribute can support the provided token. This is usually used with the relList or classList attributes.
+
+length: Returns the number of tokens in the list.
+
+toString(): Returns a string representing the tokens in the list, separated by spaces. -->

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Multiple Divs using Javascript</title>
+</head>
+<body>
+    <!-- Target container where the new div will be added -->
+     <div id="idcontainer">
+
+     </div>
+
+     <!-- Script to add multiple divs -->
+     <script>
+        const container = document.getElementById('idcontainer');
+        
+
+        const  numbersOfDiv = 5; // example : Create 5 divs
+
+        for(let i = 0 ; i < numbersOfDiv ; i++){
+            // Create a new div element
+            const newDiv = document.createElement('div');
+
+             // Add text content to the new div
+            let addText = document.createTextNode(`This is div number ${i}`);
+            newDiv.appendChild(addText);
+
+            // Optionally, add a class to the div
+            newDiv.className = 'new-div';
+            newDiv.id = `div-${i + 1}`
+             // Style the div (optional)
+            newDiv.style.border = '2px solid black';
+            newDiv.style.margin = '5px';
+            newDiv.style.padding = '10px';
+
+            // Append the div to the container 
+            container.appendChild(newDiv);
+        }
+     </script>
+</body>
+</html>

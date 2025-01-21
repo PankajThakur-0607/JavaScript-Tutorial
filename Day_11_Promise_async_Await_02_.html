@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call BackHell And promise  </title>
+</head>
+
+<body>
+
+    <h1>JavaScript Promise Object</h1>
+    <h2>The then() Method</h2>
+
+    <p id="demo"></p>
+
+</body>
+
+<script>
+    // // lets take a data which takes 2 second
+
+    // function getData(dataId , getNextData) {
+    //   setTimeout(() => {
+    //     console.log("data", dataId++);
+    //     if(getNextData){
+    //         getNextData();
+    //     }
+    //   }, 2000);
+    // }
+
+
+    // call BackHell
+
+    // getData(1 , () => {
+    //     console.log('getting data2... ');
+    //     getData(2 , () =>{
+    //         console.log('getting data3... ');
+    //         getData(3 , () => {
+    //             console.log('getting data4... ');
+    //             getData(4)
+    //         })
+    //     })
+    // })
+
+
+
+
+
+    // // to Solve callback hell promise is used
+
+    // let promise = new Promise((resolve , reject) => {
+    //     console.log("i am a promise")
+    //     // resolve(123)
+    //     reject("some error")
+    //     })
+    //     console.log(promise);
+
+    
+
+
+
+
+
+    //****************************************************
+
+    // const getPromise = () => {
+    //    return new Promise ((resolve , reject) => {
+    //         console.log("I am a promise");
+    //         // resolve("success");
+
+    //         reject("error")
+    //     })
+    // }
+
+    // let promise = getPromise();
+    // promise.then((result) => {
+    //     console.log("promise fullfiled" , result);
+    // });
+
+    // promise.catch((err) => {
+    //     console.log("promise rejected" , err);
+    // });
+
+
+
+
+
+
+    // **********************************************
+    const promise = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            const sum = 4 + 5 + 'a';
+            if (isNaN(sum)) {
+                reject("Error while calculating sum.");
+            } else {
+                resolve(sum);
+            }
+        }, 2000);
+    });
+
+    promise.then(function (result) {
+        console.log(result);
+    }).catch((err) => {
+        console.log(err);
+    });
+
+
+
+
+
+
+
+    //  ************************************
+
+    function myDisplayer(some) {
+        document.getElementById('demo').innerHTML = some;
+    }
+
+    let promise2 = new Promise((resolve, reject) => {
+        let x = 10;
+
+        if (x === 0) {
+            resolve("OK")
+        } else {
+            reject("Error");
+        }
+    });;
+
+    promise2.then(function (value) {
+        myDisplayer(value)
+    }, function (error) {
+        myDisplayer(error)
+    });
+</script>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node creation using JS </title>
+</head>
+<body>
+
+    <!-- <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+        
+    </div> -->
+
+
+
+</body>
+
+<script>
+    // let parent = document.querySelector('.parent');
+    // console.log(parent);
+    // console.log(parent.children[2].innerHTML);
+
+    // for(let i = 0; i <parent.children.length ; i++){
+    //     console.log(parent.children[i].innerHTML);
+    // }
+
+    // parent.children[2].style.color = 'orange'; 
+    // console.log(parent.firstElementChild);
+    // console.log(parent.lastElementChild);
+
+    // let dayOone =  document.querySelector('.day');
+
+    // console.log(dayOone.parentElement);
+    // console.log(dayOone.nextElementSibling);
+
+    // console.log("Nodes : " , parent.childNodes);
+
+
+    // ******************************************
+
+    const div = document.createElement('div');
+    console.log(div);
+    div.className = 'main';
+    div.id = Math.round(Math.random() * 10 + 1);  
+    div.style.padding = '10px';
+    div.setAttribute('title' , 'heading');
+    // div.innerText = 'Psnkaj  Thakur';
+   let addTex =  document.createTextNode('Pankaj Thakur');
+   div.appendChild(addTex);
+
+
+document.body.appendChild(div);
+
+const ul = document.createElement('ul');
+console.log(ul);
+ul.setAttribute('id', 'list');
+ul.classList = 'unOrdered-list'
+div.appendChild(ul)
+
+
+
+function createList(number){
+    for(let i =0 ; i < number ; i++){
+        const li = document.createElement('li');
+        // console.log(li);
+        li.classList = 'items';
+        li.appendChild(document.createTextNode('item-1'));
+        ul.appendChild(li);
+    }
+}
+
+createList(3);
+
+let getList = document.getElementsByTagName('li');
+console.log(getList);
+
+let tempHtmlColl = Array.from(getList);
+// tempHtmlColl.forEach((li , idx) => {
+//     return `The list is being initialised is : ${idx}`
+//     idx++;
+// })
+console.log(tempHtmlColl);
+
+
+</script>
+</html>
